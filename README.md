@@ -13,7 +13,7 @@ This project is a simple command-line based Library Management System implemente
 1. Clone the repository to your local machine.
 2. Open the project in your preferred IDE or text editor.
 3. Compile the Java files.
-4. Run the `LibraryManagementSystem` class.
+4. Run the LibraryManagementSystem class.
 5. Follow the on-screen prompts to interact with the Library Management System.
 
 ## Key Features and Functionalities
