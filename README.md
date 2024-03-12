@@ -13,7 +13,7 @@ This project is a simple command-line based Library Management System implemente
 1. Clone the repository to your local machine.
 2. Open the project in your preferred IDE or text editor.
 3. Compile the Java files.
-4. Run the LibraryManagementSystem class.
+4. Run the 'LibraryManagementSystem' class.
 5. Follow the on-screen prompts to interact with the Library Management System.
 
 ## Key Features and Functionalities
@@ -23,6 +23,8 @@ This project is a simple command-line based Library Management System implemente
 - Borrowing books: Users can borrow books by specifying their user ID and the title of the book they want to borrow.
 - Returning books: Users can return borrowed books by specifying their user ID and the title of the book they want to return.
 - Searching for books: Users can search for books by title, author, or user ID to find specific books or users in the library.
+- Data Persistence: Data (books and users) is stored in text files ('books.txt' and 'users.txt') for persistence between program runs.
+- Error Handling: Proper error handling is implemented throughout the application to handle invalid inputs and file operations.
 
 ## Contributors
 - [Hareem Fatima](https://github.com/5555523)
