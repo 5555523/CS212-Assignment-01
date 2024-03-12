@@ -7,7 +7,7 @@ This project is a simple command-line based Library Management System implemente
 ## Setup and Running Instructions
 ### Prerequisites
 - Java Development Kit (JDK)
-- Any text editor or an Integrated Development Environment (IDE) like IntelliJ IDEA, Eclipse, or NetBeans
+- Any text editor or an Integrated Development Environment (IDE) like IntelliJ IDEA, Eclipse,NetBeans or Visual Studio Code
 
 ### Running the Project
 1. Clone the repository to your local machine.
