@@ -165,6 +165,7 @@ class LibraryManagementSystem {
                     System.out.println("Invalid data format in Book file");
                     continue;
                 }
+                // Extract book details from each line and add to library
                 String book_id = arr[0];
                 String title = arr[1];
                 String author = arr[2];
@@ -172,12 +173,15 @@ class LibraryManagementSystem {
                 boolean availability_status = Boolean.parseBoolean(arr[4]);
                 lib.addBooks(new Book(book_id, title, author, genre, availability_status));
             }
-            scanner.close();
+            // Handle file not found exception
         } catch (FileNotFoundException e) {
-            System.out.println("Book file is not found!");
+            System.out.println("Book file is not found: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error reading from Book file: " + e.getMessage());
         }
     }
 
+    // Save library data to files
     private static void saveData() {
         try {
             saveBooks();
@@ -267,30 +271,73 @@ class LibraryManagementSystem {
 
     }
 
-    // method to add books
+    private static boolean isValidBookId(String bookId) {
+        // Check if book ID is not empty and contains only alphanumeric characters
+        return bookId.matches("[A-Za-z0-9]+");
+    }
+
+    private static boolean isValidUserId(String userId) {
+        // Check if user ID is not empty and contains only alphanumeric characters
+        return userId.matches("[A-Za-z0-9]+");
+    }
+
+    private static boolean isValidName(String name) {
+        // Check if the name is not empty and contains only letters, spaces, and hyphens
+        return !name.isEmpty() && name.matches("[A-Za-z\\s-]+");
+    }
+
+    // method to add books with input validation
     private static void addBooks(Scanner scanner) {
         System.out.println("Enter book details:");
-        System.out.print("Book ID: ");
-        String book_id = scanner.nextLine();
+        String book_id, title, author, genre;
+
+        // Input validation for book id
+        do {
+            System.out.print("Book ID: ");
+            book_id = scanner.nextLine();
+            if (!isValidBookId(book_id)) {
+                System.out.println("Invalid book ID. Please enter again.");
+            }
+        } while (!isValidBookId(book_id));
+
+        // Input for other book attributes
         System.out.print("Title: ");
-        String title = scanner.nextLine();
+        title = scanner.nextLine();
         System.out.print("Author: ");
-        String author = scanner.nextLine();
+        author = scanner.nextLine();
         System.out.print("Genre: ");
-        String genre = scanner.nextLine();
+        genre = scanner.nextLine();
+
+        // Add the book if all inputs are valid
         lib.addBooks(new Book(book_id, title, author, genre, true));
         System.out.println("Book added successfully!");
     }
 
-    // method to add users
+    // method to add users with input validation
     private static void addUsers(Scanner scanner) {
         System.out.println("Enter User details:");
-        System.out.print("User ID: ");
-        String user_id = scanner.nextLine();
+        String user_id, name, contact_information;
+
+        // Input validation for User ID
+        do {
+            System.out.print("User ID: ");
+            user_id = scanner.nextLine();
+            if (!isValidUserId(user_id)) {
+                System.out.println("Invalid user ID. Please enter again.");
+            }
+        } while (!isValidUserId(user_id));
+
+        // Input for other user attributes
         System.out.print("Name: ");
-        String name = scanner.nextLine();
+        name = scanner.nextLine();
+        if (!isValidName(name)) {
+            System.out.println("Invalid name. Please enter again.");
+            return;
+        }
         System.out.print("Contact Information: ");
-        String contact_information = scanner.nextLine();
+        contact_information = scanner.nextLine();
+
+        // Add the user if all inputs are valid
         lib.addUsers(new User(user_id, name, contact_information));
         System.out.println("User added successfully!");
     }
